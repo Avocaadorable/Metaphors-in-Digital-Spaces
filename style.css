@@ -1,0 +1,345 @@
+@font-face {
+  font-family: "VCTR Mono Light";
+  src: url("VCTRMonoTrialv0.12-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Medium";
+  src: url("helvetica-neue/HelveticaNeue-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --active-blue: #152dff;
+  --ink: #171717;
+  --wheel-size: 400px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background-color: #edf6ff;
+  background-image: linear-gradient(135deg, #f9fcff 0%, #edf6ff 45%, #dcecff 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.syllabus {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.syllabus__orbit {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+}
+
+/* Small wheel in the top-left, sharing the outer ring's center. */
+.wheel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+
+  outline: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+/* Larger concentric ring, with each paragraph extending out like a petal. */
+.syllabus__contents {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.syllabus__content {
+  position: absolute;
+  width: clamp(320px, calc(100vw - 640px), 840px);
+  margin: 0;
+  color: #858585;
+  font-family: "VCTR Mono Light", "Courier New", monospace;
+  font-weight: 300;
+  font-size: clamp(14px, 1.32vw, 20px);
+  line-height: 1.2;
+  transform-origin: 0 0;
+  pointer-events: auto;
+  transition: color 180ms ease;
+}
+
+.syllabus__week-title {
+  font-family: "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.syllabus__content p {
+  margin: 0;
+}
+
+.syllabus__content p + p {
+  margin-top: .6em;
+}
+
+.syllabus__content.is-active {
+  color: var(--active-blue);
+}
+
+.syllabus__content:not(.is-active) {
+  cursor: pointer;
+}
+
+.syllabus__content a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .14em;
+}
+
+.syllabus__content a:focus-visible {
+  outline: 1px dashed currentColor;
+  outline-offset: 3px;
+}
+
+.wheel__items {
+  position: absolute;
+  inset: 0;
+}
+
+/* Clickable flower at the shared center of both rings. */
+.wheel__center {
+  position: absolute;
+  left: 200px;
+  top: 190px;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+}
+
+.wheel__center.is-dragging {
+  cursor: grabbing;
+}
+
+.wheel__center.is-spinning .wheel__flower {
+  will-change: transform;
+}
+
+.wheel__flower {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.wheel__center:hover {
+  filter: brightness(1.06);
+}
+
+.wheel__center:focus-visible {
+  outline: 1px dashed var(--active-blue);
+  outline-offset: 4px;
+}
+
+/* Each radial menu label */
+.wheel__item {
+  position: absolute;
+  display: block;
+
+  padding: 5px 8px;
+  border: 0;
+  background: transparent;
+
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.08;
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: grab;
+  transform-origin: 0 0;
+
+  transition: color 180ms ease;
+}
+
+.syllabus.is-moving .wheel__item,
+.syllabus.is-moving .syllabus__content {
+  will-change: transform;
+}
+
+.syllabus.is-dragging .wheel,
+.syllabus.is-dragging .wheel__item {
+  cursor: grabbing;
+}
+
+/* Selected section turns blue */
+.wheel__item:hover,
+.wheel__item:focus-visible,
+.wheel__item.is-active {
+  color: var(--active-blue);
+}
+
+.wheel__item:focus-visible {
+  outline: 1px dashed var(--active-blue);
+  outline-offset: 3px;
+}
+
+/* Keep the selected paragraph readable below the flower on small screens. */
+@media (max-width: 960px) {
+  .syllabus__orbit {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: auto;
+    padding: 350px 24px 36px;
+  }
+
+  .wheel {
+    top: 18px;
+    left: 8px;
+    right: auto;
+    transform: scale(.78);
+    transform-origin: top left;
+  }
+
+  .syllabus__contents {
+    position: static;
+  }
+
+  .syllabus__content {
+    display: none;
+    position: static;
+    width: 100%;
+    font-size: 18px;
+    transform: none !important;
+  }
+
+  .syllabus__content.is-active {
+    display: block;
+  }
+}
+
+/* A movable watering can, above the page and independent of the text rings. */
+.watering-can {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 20;
+  width: clamp(108px, 11vw, 148px);
+  aspect-ratio: 1;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.watering-can__button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.watering-can.is-dragging .watering-can__button {
+  cursor: grabbing;
+}
+
+.watering-can__button:focus-visible {
+  outline: 1px dashed var(--active-blue);
+  outline-offset: 4px;
+}
+
+.watering-can__art {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 65% 65%;
+  transition: transform 220ms ease-out;
+  pointer-events: none;
+}
+
+.watering-can.is-watering .watering-can__art {
+  transform: rotate(-16deg);
+}
+
+.watering-can__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgb(36 83 135 / 12%));
+}
+
+.watering-can__spout {
+  position: absolute;
+  left: 9%;
+  top: 38%;
+  width: 1px;
+  height: 1px;
+}
+
+.water-drops {
+  position: fixed;
+  inset: 0;
+  z-index: 21;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.water-drop {
+  position: absolute;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel__item,
+  .syllabus__content,
+  .watering-can__art {
+    transition: none;
+  }
+
+  .watering-can.is-watering .watering-can__art {
+    transform: none;
+  }
+}

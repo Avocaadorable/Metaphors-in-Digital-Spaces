@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metaphors in Digital Spaces</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="flower-motion.js" defer></script>
+  <script src="watercan.js" defer></script>
+</head>
+
+<body>
+  <main class="syllabus" aria-label="Metaphors in Digital Spaces syllabus">
+    <div class="syllabus__orbit">
+      <nav
+        class="wheel"
+        aria-label="Syllabus sections"
+        tabindex="0"
+      >
+        <button
+          class="wheel__center"
+          type="button"
+          aria-label="Spin the flower"
+          title="Click or drag to spin"
+        >
+          <img class="wheel__flower" src="flower.png" alt="" width="936" height="926" draggable="false">
+        </button>
+        <div class="wheel__items" id="wheelItems"></div>
+      </nav>
+      <div class="syllabus__contents">
+        <article class="syllabus__content" id="content-0" aria-labelledby="section-0">
+          <p><a href="https://www.are.na/jiabao-wu/metaphors-in-digital-spaces" target="_blank" rel="noopener noreferrer">
+        Metaphors in Digital Spaces
+      </a></p>
+        </article>
+
+        <article class="syllabus__content" id="content-1" aria-labelledby="section-1">
+          <p>How do metaphors transform websites into spaces with a sense of place and emotion, and how do these metaphors shape what we notice, understand, or overlook in digital environments?</p>
+        </article>
+
+        <article class="syllabus__content" id="content-2" aria-labelledby="section-2">
+          <p>How do interface metaphors shape users’ expectations, and where do those expectations diverge from how digital systems actually work? My ISP will investigate how language and metaphor shape our understanding and experience of digital spaces. Through readings, case studies, and a series of small web experiments, I will explore how interface metaphors shape users’ expectations and what they reveal or obscure about digital systems. These experiments will inform a final interactive website that brings together my research and design explorations. Rather than treating metaphors as purely visual or linguistic devices, this study approaches them as structures that influence how people perceive and interact with digital systems. Through design experiments, I will investigate the relationship between interface language, technological structures, and user experience.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-3" aria-labelledby="section-3">
+          <p>By the end of this independent study, I will be able to:</p>
+          <p><em>Analyze,</em> how spatial metaphors and interface language shape people’s expectations, navigation, and feelings within websites. <em>Question,</em> what these metaphors reveal or hide about digital spaces, including labor, access, and control. <em>Create,</em> build websites to explore how metaphors shape the way content is organized and how people navigate and interact. <em>Observe,</em> use critique and feedback to compare my intended meanings with how others experience the experiments. <em>Express,</em> bring together research and experiments in a final interactive website that explain my design decisions and findings.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-4" aria-labelledby="section-4">
+          <p><em class="syllabus__week-title">Week 1</em><br>
+            How Do Metaphors Shape Digital Spaces?<br>
+            This week will focus on understanding how metaphors influence our perception and experience of digital environments. Through readings, visual research, and case studies, I will investigate how familiar concepts from the physical world are translated into digital interfaces, shaping users' expectations, navigation, and understanding of information.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-5" aria-labelledby="section-5">
+          <p><em class="syllabus__week-title">Week 2</em><br>
+            From Metaphor to Interface<br>
+            This week will explore how metaphors can be translated into different interface structures. Using the same collection of content, I will experiment with metaphors such as a garden, a library, and a room to investigate how each influences the organization, presentation, and experience of information. Initial sketches and Figma prototypes will help identify their possibilities and limitations.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-6" aria-labelledby="section-6">
+          <p><em class="syllabus__week-title">Week 3</em><br>
+            Metaphors as Interactive Systems<br>
+            This week will investigate how metaphors can shape the behavior and interaction of a website beyond its visual appearance. Through technical research and web prototyping, I will explore how navigation, transitions, and interactive elements can reflect the logic of a chosen metaphor. Feedback from critique will inform further development.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-7" aria-labelledby="section-7">
+          <p><em class="syllabus__week-title">Week 4</em><br>
+            Building a Metaphorical Digital Space<br>
+            This week will focus on developing a cohesive digital experience from the previous experiments. I will select and refine a metaphor, examining how its spatial logic can guide navigation, content relationships, and user interaction. The goal is to develop a functional interactive website that brings together my research and design explorations.</p>
+        </article>
+
+        <article class="syllabus__content" id="content-8" aria-labelledby="section-8">
+          <p><em class="syllabus__week-title">Week 5</em><br>
+            What Do Metaphors Reveal and Obscure?<br>
+            In the final week, I will finish my interactive website as a work of hypertext net art and document my research and design process. I will also reflect on how the chosen metaphor changes the way people explore and understand the website, including what it helps them notice and what it might hide.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+  <div class="water-drops" aria-hidden="true"></div>
+  <div class="watering-can">
+    <button
+      class="watering-can__button"
+      type="button"
+      aria-label="Watering can: click to pour, drag or use arrow keys to move over the flower to water automatically"
+      title="Click to water · drag over the flower to water automatically"
+    >
+      <span class="watering-can__art">
+        <img src="watercan.png" alt="" width="1080" height="1080" draggable="false">
+        <span class="watering-can__spout" aria-hidden="true"></span>
+      </span>
+    </button>
+  </div>
+</body>
+</html>
