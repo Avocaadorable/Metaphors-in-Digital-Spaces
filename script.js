@@ -7,7 +7,8 @@ const sections = [
   "Week 2",
   "Week 3",
   "Week 4",
-  "Week 5"
+  "Week 5",
+  "About this site"
 ];
 
 const syllabus = document.querySelector(".syllabus");
