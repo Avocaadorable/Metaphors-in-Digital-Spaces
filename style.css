@@ -332,6 +332,40 @@ button, input, select, textarea {
   will-change: transform, opacity;
 }
 
+/* A narrow blue link rail for the Are.na channel. */
+.arena-link {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--active-blue);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: .01em;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+}
+
+.arena-link span {
+  transform: rotate(0deg);
+}
+
+.arena-link:hover,
+.arena-link:focus-visible {
+  background: #1428d8;
+}
+
+.arena-link:focus-visible {
+  outline: 2px dashed #fff;
+  outline-offset: -4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wheel__item,
   .syllabus__content,
@@ -342,4 +376,5 @@ button, input, select, textarea {
   .watering-can.is-watering .watering-can__art {
     transform: none;
   }
+
 }
